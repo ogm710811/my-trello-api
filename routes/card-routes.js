@@ -1,7 +1,7 @@
 const express    = require('express');
 const mongoose   = require('mongoose');
-const ListModel = require('../models/list-model');
-const CardModel = require('../models/card-model');
+const ListModel  = require('../models/list-model');
+const CardModel  = require('../models/card-model');
 
 const cardRoutes = express.Router();
 /*
@@ -33,7 +33,7 @@ cardRoutes.post('/api/lists/:id/cards', (req, res, next) => {
             // the default position will be 1
             let newPosition = 1;
 
-            // if we have cars then look for the las position
+            // if we have cars then look for the last card position
             // and add 1 to set the position of the new card
             if (lastCard) {
                 newPosition = lastCard.position + 1;
@@ -65,7 +65,7 @@ cardRoutes.post('/api/lists/:id/cards', (req, res, next) => {
 
                         res.status(200).json({
                             newCard,
-                            message: `card ${ theCard._id } successfully save`
+                            message: `card ${ newCard._id } successfully save`
                         });
                     }
                 );
@@ -105,7 +105,7 @@ cardRoutes.put('/api/cards/:id', (req, res, next) => {
 
                     res.status(200).json({
                         editedCard,
-                        message: `card ${ theCard._id } successfully save`
+                        message: `card ${ editedCard._id } successfully save`
                     });
                 });
             }
